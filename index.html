@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Голос → Google Sheets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Голосовое управление Google Sheets</h1>
+
+    <section class="card">
+      <label>OAuth Client ID <input id="clientId" placeholder="xxxx.apps.googleusercontent.com"></label>
+      <label>Таблица (ссылка или ID) <input id="sheet" placeholder="https://docs.google.com/spreadsheets/d/…"></label>
+      <div class="row">
+        <button id="signin">Войти в Google</button>
+        <span id="status">Не выполнен вход</span>
+      </div>
+      <p>Активный лист: <b id="active">Лист1</b></p>
+    </section>
+
+    <section class="card">
+      <button id="mic" class="mic">🎤 Говорить</button>
+      <label class="inline"><input type="checkbox" id="speak" checked> Озвучивать ответы</label>
+      <form id="typed" class="row">
+        <input id="typedText" placeholder="…или введите команду текстом" autocomplete="off">
+        <button>Выполнить</button>
+      </form>
+      <ul id="log"></ul>
+    </section>
+
+    <details class="card">
+      <summary>Примеры команд</summary>
+      <ul>
+        <li>«Запиши 500 в ячейку B3» · «В B3 запиши привет»</li>
+        <li>«Прочитай ячейку B3» · «Покажи A1 до C5»</li>
+        <li>«Добавь строку: Иван, 25, Москва»</li>
+        <li>«Сумма A1 до A10 в ячейку C1» · «Среднее A1 до A10»</li>
+        <li>«Очисти A1 до C5» · «Жирным A1 до C1»</li>
+        <li>«Новый лист Расходы» · «Перейди на лист Расходы»</li>
+        <li>«Отмени»</li>
+      </ul>
+    </details>
+  </main>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
